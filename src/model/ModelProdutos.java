@@ -16,6 +16,7 @@ public class ModelProdutos {
     private Double proValor;
     private int proEstoque;
     private Double ProValorCompra;
+    private Double ProDesconto;
 
     /**
      * @return the idProduto
@@ -85,5 +86,19 @@ public class ModelProdutos {
      */
     public void setProValorCompra(Double proValorCompra) {
         this.ProValorCompra = proValorCompra;
+    }
+    
+    /**
+     * @return the proDesconto
+     */
+    public Double getProDesconto() {
+        return ProDesconto;
+    }
+
+    /**
+     * @param proDesconto the proValor to set
+     */
+    public void setProDesconto(Double proDesconto) {
+        this.ProDesconto = proDesconto;
     }
 }

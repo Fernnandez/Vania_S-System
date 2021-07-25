@@ -18,7 +18,8 @@ public class ModelVendas {
     private int idCliente;
     private String venEstado;
     private double venCusto;
-
+    private double venValorPendente;
+    private double venValorPago;
     /**
      * Construtor
      */
@@ -183,6 +184,38 @@ public class ModelVendas {
      */
     public double getVenCusto() {
         return this.venCusto;
+    }
+    
+        /**
+     * seta o valor de custo da venda
+     *
+     * @param pVenCusto
+     */
+    public void setVenValorPendente(double pVenValorPendente) {
+        this.venValorPendente = pVenValorPendente;
+    }
+
+    /**
+     * @return venCusto
+     */
+    public double getVenValorPendente() {
+        return this.venValorPendente;
+    }
+    
+            /**
+     * seta o valor de custo da venda
+     *
+     * @param pVenCusto
+     */
+    public void setVenValorPago(double pVenValorPago) {
+        this.venValorPago = pVenValorPago;
+    }
+
+    /**
+     * @return venCusto
+     */
+    public double getVenValorPago() {
+        return this.venValorPago;
     }
 
     @Override

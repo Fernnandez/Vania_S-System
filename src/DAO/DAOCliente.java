@@ -22,10 +22,12 @@ public class DAOCliente extends ConexaoMySql {
             return this.insertSQL(
                     "INSERT INTO tbl_cliente ("
                     + "cli_nome,"
-                    + "cli_telefone"
+                    + "cli_telefone,"
+                    + "tipo"       
                     + ") VALUES ("
                     + "'" + pModelCliente.getCliNome() + "',"
-                    + "'" + pModelCliente.getCliTelefone() + "'"
+                    + "'" + pModelCliente.getCliTelefone() + "',"
+                    + "'" + pModelCliente.getCliTipo()+ "'"
                     + ");"
             );
         } catch (Exception e) {
@@ -116,7 +118,7 @@ public class DAOCliente extends ConexaoMySql {
                     + "cli_nome,"
                     + "cli_telefone"
                     + " FROM"
-                    + " tbl_cliente"
+                    + " tbl_cliente WHERE tipo = 'cli' "
                     + ";"
             );
 

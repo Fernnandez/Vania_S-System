@@ -77,16 +77,25 @@ public class Estoque extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jbCancelar = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 204, 255));
+        setBackground(new java.awt.Color(255, 204, 204));
+        setBorder(null);
         setClosable(true);
-        setPreferredSize(new java.awt.Dimension(1350, 750));
+        setAutoscrolls(true);
+        setMaximumSize(new java.awt.Dimension(1010, 580));
+        setMinimumSize(new java.awt.Dimension(1010, 580));
+        setPreferredSize(new java.awt.Dimension(1010, 580));
 
-        painelEstoque.setBackground(new java.awt.Color(255, 204, 255));
+        painelEstoque.setBackground(new java.awt.Color(255, 204, 204));
         painelEstoque.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        painelEstoque.setMaximumSize(new java.awt.Dimension(1010, 560));
+        painelEstoque.setMinimumSize(new java.awt.Dimension(1010, 560));
         painelEstoque.setOpaque(true);
-        painelEstoque.setPreferredSize(new java.awt.Dimension(1350, 750));
+        painelEstoque.setPreferredSize(new java.awt.Dimension(1010, 560));
 
-        painelConsulta.setBackground(new java.awt.Color(255, 204, 255));
+        painelConsulta.setBackground(new java.awt.Color(255, 204, 204));
+        painelConsulta.setMaximumSize(new java.awt.Dimension(1010, 560));
+        painelConsulta.setMinimumSize(new java.awt.Dimension(1010, 560));
+        painelConsulta.setPreferredSize(new java.awt.Dimension(1010, 560));
 
         jtfPesquisa.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jtfPesquisa.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -126,19 +135,20 @@ public class Estoque extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Código", "Produto", "Estoque", "Valor De Compra", "Valor De venda", "Investimento"
+                "ID", "Produto", "Estoque", "Valor C", "Valor V", "Investimento", "Lucro U", "Lucro T"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jtListaDeProdutos.setToolTipText("");
         jtListaDeProdutos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jtListaDeProdutos.setGridColor(new java.awt.Color(255, 255, 255));
+        jtListaDeProdutos.setGridColor(new java.awt.Color(0, 0, 0));
         jtListaDeProdutos.setRowHeight(40);
         jtListaDeProdutos.setRowMargin(10);
         jtListaDeProdutos.setSelectionBackground(new java.awt.Color(255, 204, 255));
@@ -146,22 +156,27 @@ public class Estoque extends javax.swing.JInternalFrame {
         jtListaDeProdutos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         painelListaDeProdutos.setViewportView(jtListaDeProdutos);
         if (jtListaDeProdutos.getColumnModel().getColumnCount() > 0) {
-            jtListaDeProdutos.getColumnModel().getColumn(0).setMinWidth(90);
-            jtListaDeProdutos.getColumnModel().getColumn(0).setPreferredWidth(90);
-            jtListaDeProdutos.getColumnModel().getColumn(0).setMaxWidth(90);
-            jtListaDeProdutos.getColumnModel().getColumn(2).setMinWidth(150);
-            jtListaDeProdutos.getColumnModel().getColumn(2).setPreferredWidth(150);
-            jtListaDeProdutos.getColumnModel().getColumn(2).setMaxWidth(150);
-            jtListaDeProdutos.getColumnModel().getColumn(3).setMinWidth(120);
-            jtListaDeProdutos.getColumnModel().getColumn(3).setPreferredWidth(120);
-            jtListaDeProdutos.getColumnModel().getColumn(3).setMaxWidth(120);
-            jtListaDeProdutos.getColumnModel().getColumn(4).setMinWidth(120);
-            jtListaDeProdutos.getColumnModel().getColumn(4).setPreferredWidth(120);
-            jtListaDeProdutos.getColumnModel().getColumn(4).setMaxWidth(120);
-            jtListaDeProdutos.getColumnModel().getColumn(5).setMinWidth(180);
-            jtListaDeProdutos.getColumnModel().getColumn(5).setPreferredWidth(180);
-            jtListaDeProdutos.getColumnModel().getColumn(5).setMaxWidth(180);
-            jtListaDeProdutos.getColumnModel().getColumn(5).setHeaderValue("Investimento");
+            jtListaDeProdutos.getColumnModel().getColumn(0).setMinWidth(40);
+            jtListaDeProdutos.getColumnModel().getColumn(0).setPreferredWidth(40);
+            jtListaDeProdutos.getColumnModel().getColumn(0).setMaxWidth(40);
+            jtListaDeProdutos.getColumnModel().getColumn(2).setMinWidth(80);
+            jtListaDeProdutos.getColumnModel().getColumn(2).setPreferredWidth(80);
+            jtListaDeProdutos.getColumnModel().getColumn(2).setMaxWidth(80);
+            jtListaDeProdutos.getColumnModel().getColumn(3).setMinWidth(90);
+            jtListaDeProdutos.getColumnModel().getColumn(3).setPreferredWidth(90);
+            jtListaDeProdutos.getColumnModel().getColumn(3).setMaxWidth(90);
+            jtListaDeProdutos.getColumnModel().getColumn(4).setMinWidth(90);
+            jtListaDeProdutos.getColumnModel().getColumn(4).setPreferredWidth(90);
+            jtListaDeProdutos.getColumnModel().getColumn(4).setMaxWidth(90);
+            jtListaDeProdutos.getColumnModel().getColumn(5).setMinWidth(150);
+            jtListaDeProdutos.getColumnModel().getColumn(5).setPreferredWidth(150);
+            jtListaDeProdutos.getColumnModel().getColumn(5).setMaxWidth(150);
+            jtListaDeProdutos.getColumnModel().getColumn(6).setMinWidth(80);
+            jtListaDeProdutos.getColumnModel().getColumn(6).setPreferredWidth(80);
+            jtListaDeProdutos.getColumnModel().getColumn(6).setMaxWidth(80);
+            jtListaDeProdutos.getColumnModel().getColumn(7).setMinWidth(80);
+            jtListaDeProdutos.getColumnModel().getColumn(7).setPreferredWidth(80);
+            jtListaDeProdutos.getColumnModel().getColumn(7).setMaxWidth(80);
         }
 
         jbAlterar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -197,44 +212,39 @@ public class Estoque extends javax.swing.JInternalFrame {
         painelConsulta.setLayout(painelConsultaLayout);
         painelConsultaLayout.setHorizontalGroup(
             painelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelConsultaLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelConsultaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jtfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jbRetornar, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(170, 170, 170)
-                .addComponent(jbAlterar)
-                .addGap(79, 79, 79)
-                .addComponent(jbExcluir)
-                .addContainerGap(168, Short.MAX_VALUE))
-            .addGroup(painelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(painelConsultaLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(painelListaDeProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, 1334, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addGroup(painelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(painelListaDeProdutos)
+                    .addGroup(painelConsultaLayout.createSequentialGroup()
+                        .addComponent(jtfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbRetornar, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                        .addComponent(jbAlterar)
+                        .addGap(65, 65, 65)
+                        .addComponent(jbExcluir)))
+                .addGap(18, 18, 18))
         );
         painelConsultaLayout.setVerticalGroup(
             painelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelConsultaLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addGroup(painelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(painelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jbRetornar))
-                    .addGroup(painelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jbAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jbExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(594, Short.MAX_VALUE))
-            .addGroup(painelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelConsultaLayout.createSequentialGroup()
-                    .addContainerGap(192, Short.MAX_VALUE)
-                    .addComponent(painelListaDeProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+                .addContainerGap()
+                .addGroup(painelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbRetornar)
+                    .addComponent(jbAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(painelListaDeProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         painelEstoque.addTab("Consulta", painelConsulta);
 
-        painelCadastro.setBackground(new java.awt.Color(255, 204, 255));
+        painelCadastro.setBackground(new java.awt.Color(255, 204, 204));
+        painelCadastro.setMaximumSize(new java.awt.Dimension(1010, 560));
+        painelCadastro.setMinimumSize(new java.awt.Dimension(1010, 560));
 
         jbSalvar.setBackground(new java.awt.Color(102, 255, 102));
         jbSalvar.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -302,54 +312,61 @@ public class Estoque extends javax.swing.JInternalFrame {
                     .addGroup(painelCadastroLayout.createSequentialGroup()
                         .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelCadastroLayout.createSequentialGroup()
-                                .addGap(56, 56, 56)
-                                .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtfNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtfValorCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap()
+                                .addComponent(jtfValorCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(painelCadastroLayout.createSequentialGroup()
-                                .addGap(201, 201, 201)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(232, 232, 232)
-                        .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGap(146, 146, 146)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(painelCadastroLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jtfValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(painelCadastroLayout.createSequentialGroup()
+                                .addGap(98, 98, 98)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(painelCadastroLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jtfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(painelCadastroLayout.createSequentialGroup()
+                                .addGap(131, 131, 131)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(painelCadastroLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jtfNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(123, 123, 123)
+                        .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jbCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(painelCadastroLayout.createSequentialGroup()
-                        .addGap(204, 204, 204)
-                        .addComponent(jLabel2))
-                    .addGroup(painelCadastroLayout.createSequentialGroup()
-                        .addGap(196, 196, 196)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(painelCadastroLayout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(235, Short.MAX_VALUE))
+                        .addGap(129, 129, 129)
+                        .addComponent(jLabel2)))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         painelCadastroLayout.setVerticalGroup(
             painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCadastroLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jtfNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtfValorCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbSalvar))
-                .addGap(14, 14, 14)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jtfValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbCancelar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(painelCadastroLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfValorCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jtfValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelCadastroLayout.createSequentialGroup()
+                        .addComponent(jbSalvar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbCancelar)))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jtfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         painelEstoque.addTab("Cadastro", painelCadastro);
@@ -358,11 +375,11 @@ public class Estoque extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, 1348, Short.MAX_VALUE)
+            .addComponent(painelEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE)
+            .addComponent(painelEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -405,7 +422,7 @@ public class Estoque extends javax.swing.JInternalFrame {
                 JOptionPane.YES_NO_OPTION);
 
         //se resposa for não para continuar o registro da venda
-        if (respostaConfirmacao == JOptionPane.NO_OPTION) {
+        if (respostaConfirmacao == JOptionPane.NO_OPTION || respostaConfirmacao == JOptionPane.CLOSED_OPTION) {
             //sai do método 
             return;
         }
@@ -418,7 +435,7 @@ public class Estoque extends javax.swing.JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Possivelmente esse produto está ligado a alguma venda \n\n"
                         + "Caso não esteja, é uma falha no sistema, entre em contato com o ADM",
-                        "ERRO", JOptionPane.ERROR_MESSAGE);    
+                        "ERRO", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Código inválido ou nenhum registro foi selecionado!", "Aviso", JOptionPane.ERROR_MESSAGE);
@@ -435,6 +452,7 @@ public class Estoque extends javax.swing.JInternalFrame {
             modelProdutos.setProValor(formatador.converterVirgulaParaPonto(jtfValorVenda.getText()));
             modelProdutos.setProEstoque(Integer.valueOf(jtfQuantidade.getText()));
             modelProdutos.setProValorCompra(formatador.converterVirgulaParaPonto(jtfValorCompra.getText()));
+            modelProdutos.setProDesconto(10.0);
             if (salvarAlterar == "alterar") {
                 if (controllerProdutos.alterarProdutoController(modelProdutos)) {
                     JOptionPane.showMessageDialog(this, "Registro do produto alterado com sucesso!!", "ATENÇÃO", JOptionPane.INFORMATION_MESSAGE);
@@ -487,7 +505,7 @@ public class Estoque extends javax.swing.JInternalFrame {
                 JOptionPane.YES_NO_OPTION);
 
         //se resposa for não para continuar o registro da venda
-        if (respostaConfirmacao == JOptionPane.NO_OPTION) {
+        if (respostaConfirmacao == JOptionPane.NO_OPTION || respostaConfirmacao == JOptionPane.CLOSED_OPTION) {
             //sai do método 
             return;
         }
@@ -541,17 +559,22 @@ public class Estoque extends javax.swing.JInternalFrame {
     private void carregarProdutos() {
         listaModelProdutos = controllerProdutos.retornarListaProdutoController();
         DefaultTableModel modelo = (DefaultTableModel) jtListaDeProdutos.getModel();
+        double lucroUnd, lucroParcial;
         modelo.setNumRows(0);
         //inserir produtos na tabela
         int cont = listaModelProdutos.size();
         for (int i = 0; i < cont; i++) {
+            lucroUnd = ((listaModelProdutos.get(i).getProValor()) - (listaModelProdutos.get(i).getProValorCompra()));
+            lucroParcial = (((listaModelProdutos.get(i).getProValor()) - (listaModelProdutos.get(i).getProValorCompra())) * listaModelProdutos.get(i).getProEstoque());
             modelo.addRow(new Object[]{
                 listaModelProdutos.get(i).getIdProduto(),
                 listaModelProdutos.get(i).getProNome(),
                 listaModelProdutos.get(i).getProEstoque(),
                 listaModelProdutos.get(i).getProValorCompra(),
                 listaModelProdutos.get(i).getProValor(),
-                listaModelProdutos.get(i).getProValorCompra() * listaModelProdutos.get(i).getProEstoque()
+                listaModelProdutos.get(i).getProValorCompra() * listaModelProdutos.get(i).getProEstoque(),
+                lucroUnd,
+                lucroParcial
             });
         }
     }
@@ -587,10 +610,13 @@ public class Estoque extends javax.swing.JInternalFrame {
         centralizado.setHorizontalAlignment(SwingConstants.CENTER);
 
         jtListaDeProdutos.getColumnModel().getColumn(0).setCellRenderer(centralizado);
+        jtListaDeProdutos.getColumnModel().getColumn(1).setCellRenderer(centralizado);
         jtListaDeProdutos.getColumnModel().getColumn(2).setCellRenderer(centralizado);
         jtListaDeProdutos.getColumnModel().getColumn(3).setCellRenderer(centralizado);
         jtListaDeProdutos.getColumnModel().getColumn(4).setCellRenderer(centralizado);
         jtListaDeProdutos.getColumnModel().getColumn(5).setCellRenderer(centralizado);
+        jtListaDeProdutos.getColumnModel().getColumn(6).setCellRenderer(centralizado);
+        jtListaDeProdutos.getColumnModel().getColumn(7).setCellRenderer(centralizado);
 
     }
 

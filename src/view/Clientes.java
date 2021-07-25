@@ -31,6 +31,8 @@ import model.ModelVendasCliente;
  */
 public class Clientes extends javax.swing.JInternalFrame {
 
+    ViewPrincipal principal = new ViewPrincipal();
+
     ControllerCliente controllerCliente = new ControllerCliente();
     ModelCliente modelCliente = new ModelCliente();
     ArrayList<ModelCliente> listaModelCliente = new ArrayList<>();
@@ -76,18 +78,32 @@ public class Clientes extends javax.swing.JInternalFrame {
         jtfTelefone = new javax.swing.JFormattedTextField();
         jtfNomeCliente = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(255, 204, 255));
+        setBackground(new java.awt.Color(255, 204, 204));
+        setBorder(null);
         setClosable(true);
+        setMaximumSize(new java.awt.Dimension(1010, 580));
+        setMinimumSize(new java.awt.Dimension(1010, 580));
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1010, 580));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentMoved(java.awt.event.ComponentEvent evt) {
+                formComponentMoved(evt);
+            }
+        });
 
-        painelClientes.setBackground(new java.awt.Color(255, 204, 255));
-        painelClientes.setForeground(new java.awt.Color(255, 255, 255));
+        painelClientes.setBackground(new java.awt.Color(255, 204, 204));
+        painelClientes.setForeground(new java.awt.Color(0, 0, 0));
         painelClientes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        painelClientes.setMaximumSize(new java.awt.Dimension(1010, 560));
+        painelClientes.setMinimumSize(new java.awt.Dimension(1010, 560));
         painelClientes.setOpaque(true);
-        painelClientes.setPreferredSize(new java.awt.Dimension(1350, 750));
+        painelClientes.setPreferredSize(new java.awt.Dimension(1010, 560));
 
-        painelConsulta.setBackground(new java.awt.Color(255, 204, 255));
+        painelConsulta.setBackground(new java.awt.Color(255, 204, 204));
         painelConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        painelConsulta.setMaximumSize(new java.awt.Dimension(1010, 560));
+        painelConsulta.setMinimumSize(new java.awt.Dimension(1010, 560));
+        painelConsulta.setPreferredSize(new java.awt.Dimension(1010, 560));
 
         jtfPesquisa.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jtfPesquisa.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -98,6 +114,11 @@ public class Clientes extends javax.swing.JInternalFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtfPesquisaFocusLost(evt);
+            }
+        });
+        jtfPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfPesquisaActionPerformed(evt);
             }
         });
         jtfPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -189,45 +210,41 @@ public class Clientes extends javax.swing.JInternalFrame {
         painelConsulta.setLayout(painelConsultaLayout);
         painelConsultaLayout.setHorizontalGroup(
             painelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelConsultaLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelConsultaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jtfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(jbRetornar, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(159, 159, 159)
-                .addComponent(jbAlterar)
-                .addGap(79, 79, 79)
-                .addComponent(jbExcluir)
-                .addContainerGap(168, Short.MAX_VALUE))
-            .addGroup(painelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(painelConsultaLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(painelListaDePClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 1334, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addGroup(painelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(painelListaDePClientes)
+                    .addGroup(painelConsultaLayout.createSequentialGroup()
+                        .addComponent(jtfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbRetornar, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+                        .addComponent(jbAlterar)
+                        .addGap(41, 41, 41)
+                        .addComponent(jbExcluir)))
+                .addGap(18, 18, 18))
         );
         painelConsultaLayout.setVerticalGroup(
             painelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelConsultaLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addGroup(painelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(painelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jbRetornar))
-                    .addGroup(painelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jbAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jbExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(585, Short.MAX_VALUE))
-            .addGroup(painelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelConsultaLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(painelListaDePClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(painelConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbRetornar)
+                    .addComponent(jbAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(painelListaDePClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         painelClientes.addTab("Consulta", painelConsulta);
 
-        painelCadastro.setBackground(new java.awt.Color(255, 204, 255));
+        painelCadastro.setBackground(new java.awt.Color(255, 204, 204));
         painelCadastro.setForeground(new java.awt.Color(255, 255, 255));
+        painelCadastro.setMaximumSize(new java.awt.Dimension(1010, 560));
+        painelCadastro.setMinimumSize(new java.awt.Dimension(1010, 560));
+        painelCadastro.setPreferredSize(new java.awt.Dimension(1010, 560));
 
         jbSalvar.setBackground(new java.awt.Color(102, 255, 102));
         jbSalvar.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -273,44 +290,34 @@ public class Clientes extends javax.swing.JInternalFrame {
         painelCadastroLayout.setHorizontalGroup(
             painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCadastroLayout.createSequentialGroup()
-                .addGap(213, 213, 213)
-                .addComponent(jbCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 292, Short.MAX_VALUE)
-                .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(195, 195, 195))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCadastroLayout.createSequentialGroup()
-                .addContainerGap(563, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(557, 557, 557))
-            .addGroup(painelCadastroLayout.createSequentialGroup()
-                .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(64, 64, 64)
+                .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(painelCadastroLayout.createSequentialGroup()
-                        .addGap(355, 355, 355)
-                        .addComponent(jtfNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(painelCadastroLayout.createSequentialGroup()
-                        .addGap(545, 545, 545)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(painelCadastroLayout.createSequentialGroup()
-                        .addGap(416, 416, 416)
-                        .addComponent(jtfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jbCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
         );
         painelCadastroLayout.setVerticalGroup(
             painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCadastroLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel2)
-                .addGap(34, 34, 34)
-                .addComponent(jtfNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jtfNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addComponent(jtfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 254, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
                 .addGroup(painelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCancelar)
                     .addComponent(jbSalvar))
-                .addGap(42, 42, 42))
+                .addGap(97, 97, 97))
         );
 
         painelClientes.addTab("Cadastro", painelCadastro);
@@ -319,11 +326,11 @@ public class Clientes extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 1348, Short.MAX_VALUE)
+            .addComponent(painelClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
+            .addComponent(painelClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -377,7 +384,7 @@ public class Clientes extends javax.swing.JInternalFrame {
                 JOptionPane.YES_NO_OPTION);
 
         //se resposa for não para continuar o registro da venda
-        if (respostaConfirmacao == JOptionPane.NO_OPTION) {
+        if (respostaConfirmacao == JOptionPane.NO_OPTION || respostaConfirmacao == JOptionPane.CLOSED_OPTION) {
             //sai do método 
             return;
         }
@@ -390,8 +397,8 @@ public class Clientes extends javax.swing.JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Possivelmente esse cliente está ligado a alguma venda \n\n"
                         + "Caso não esteja, é uma falha no sistema, entre em contato com o ADM",
-                        "ERRO", JOptionPane.ERROR_MESSAGE       
-         );
+                        "ERRO", JOptionPane.ERROR_MESSAGE
+                );
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Código inválido ou nenhum registro foi selecionado!", "Aviso", JOptionPane.ERROR_MESSAGE);
@@ -405,6 +412,7 @@ public class Clientes extends javax.swing.JInternalFrame {
         } else {
             modelCliente.setCliNome(jtfNomeCliente.getText());
             modelCliente.setCliTelefone(jtfTelefone.getText());
+            modelCliente.setCliTipo("cli");
             if (salvarAlterar == "alterar") {
                 if (controllerCliente.atualizarClienteController(modelCliente)) {
                     JOptionPane.showMessageDialog(this, "Registro alterado com sucesso!!", "ATENÇÃO", JOptionPane.INFORMATION_MESSAGE);
@@ -437,7 +445,7 @@ public class Clientes extends javax.swing.JInternalFrame {
                 JOptionPane.YES_NO_OPTION);
 
         //se resposa for não para continuar o registro da venda
-        if (respostaConfirmacao == JOptionPane.NO_OPTION) {
+        if (respostaConfirmacao == JOptionPane.NO_OPTION || respostaConfirmacao == JOptionPane.CLOSED_OPTION) {
             //sai do método 
             return;
         }
@@ -469,6 +477,14 @@ public class Clientes extends javax.swing.JInternalFrame {
             }
         });
     }//GEN-LAST:event_jtfPesquisaKeyTyped
+
+    private void jtfPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfPesquisaActionPerformed
+
+    private void formComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentMoved
+
+    }//GEN-LAST:event_formComponentMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -540,6 +556,11 @@ public class Clientes extends javax.swing.JInternalFrame {
 
         DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
         centralizado.setHorizontalAlignment(SwingConstants.CENTER);
+
+        jtListaDeClientes.getColumnModel().getColumn(0).setCellRenderer(centralizado);
+        jtListaDeClientes.getColumnModel().getColumn(1).setCellRenderer(centralizado);
+        jtListaDeClientes.getColumnModel().getColumn(2).setCellRenderer(centralizado);
+
 
     }
 }

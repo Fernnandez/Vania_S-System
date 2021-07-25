@@ -15,63 +15,76 @@ import model.ModelProdutos;
  * @author afbo2
  */
 public class ControllerProdutos {
-    
+
     private DaoProdutos daoProdutos = new DaoProdutos();
-    
+
     /**
      * Salvar Produtos Controller
+     *
      * @param pModelProdutos
-     * @return 
+     * @return
      */
-    public int salvarProdutoController(ModelProdutos pModelProdutos){
+    public int salvarProdutoController(ModelProdutos pModelProdutos) {
         return this.daoProdutos.salvarProdutosDAO(pModelProdutos);
-    
+
     }
+
     /**
      * Excluir um produto pelo código
+     *
      * @param pIdProduto
      * @return boolean
      */
-    public boolean excluirProdutoController(int pCodigo){
-        
+    public boolean excluirProdutoController(int pCodigo) {
+
         return this.daoProdutos.excluirProdutoDAO(pCodigo);
     }
+
     /**
      * Alterar um Produto
+     *
      * @param pModelProdutos
      * @return int Codigo
      */
-    public boolean alterarProdutoController(ModelProdutos pModelProdutos){
+    public boolean alterarProdutoController(ModelProdutos pModelProdutos) {
         return this.daoProdutos.alterarProdutoDAO(pModelProdutos);
     }
+
     /**
      * retorna produto pelo código
+     *
      * @param pCodigo
      * @return model Produto
      */
-    public  ModelProdutos retornarProdutoController(int pCodigo){
+    public ModelProdutos retornarProdutoController(int pCodigo) {
         return this.daoProdutos.retornarProdutoDAO(pCodigo);
     }
+
     /**
      * retorna produto pelo código
+     *
      * @param pNomeProduto
      * @return model Produto
      */
-    public  ModelProdutos retornarProdutoController(String pNomeProduto){
+    public ModelProdutos retornarProdutoController(String pNomeProduto) {
         return this.daoProdutos.retornarProdutoDAO(pNomeProduto);
     }
-    
+
     /**
      * retornar uma lista de produtos
+     *
      * @return Lista Model Produtos
      */
-    public ArrayList<ModelProdutos> retornarListaProdutoController(){
+    public ArrayList<ModelProdutos> retornarListaProdutoController() {
         return this.daoProdutos.retornarListaPordutosDAO();
-    }    
+    }
+
+    public ArrayList<ModelProdutos> retornarListaProdutoEstoqueController() {
+        return this.daoProdutos.retornarListaPordutosEstoqueDAO();
+    }
 
     //alterar o estoque passando uma lista de produtos daa venda
     public boolean alterarEstoqueProdutosController(ArrayList<ModelProdutos> pListaModelProdutos) {
         return this.daoProdutos.alterarEstoqueProdutosDAO(pListaModelProdutos);
-    }  
+    }
 }
-    

@@ -18,7 +18,9 @@ public class ParcelasCartao extends javax.swing.JDialog {
      */
     public ParcelasCartao(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        setUndecorated(true);
         initComponents();
+
     }
 
     /**
@@ -36,6 +38,7 @@ public class ParcelasCartao extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jtfParcelas = new javax.swing.JFormattedTextField();
         jbEnviar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(460, 265));
@@ -44,7 +47,7 @@ public class ParcelasCartao extends javax.swing.JDialog {
 
         jlCartao.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jlCartao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlCartao.setText("Venda no Cartão");
+        jlCartao.setText("Informe as parcelas");
         jlCartao.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vania's bg/cartao-de-credito (1).png"))); // NOI18N
@@ -86,6 +89,14 @@ public class ParcelasCartao extends javax.swing.JDialog {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vania's bg/cancel.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,21 +104,28 @@ public class ParcelasCartao extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(175, 175, 175)
-                        .addComponent(jbEnviar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(painelCartao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jlCartao)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(175, 175, 175)
+                                .addComponent(jbEnviar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(painelCartao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 27, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jlCartao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlCartao)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlCartao)
+                    .addComponent(jButton2))
                 .addGap(18, 18, 18)
                 .addComponent(painelCartao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -122,6 +140,11 @@ public class ParcelasCartao extends javax.swing.JDialog {
         Cartao();
         dispose();
     }//GEN-LAST:event_jbEnviarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        jtfParcelas.setText("");
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,6 +189,7 @@ public class ParcelasCartao extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JButton jbEnviar;
@@ -174,7 +198,7 @@ public class ParcelasCartao extends javax.swing.JDialog {
     private javax.swing.JPanel painelCartao;
     // End of variables declaration//GEN-END:variables
 
-    public int Cartao(){
+    public int Cartao() {
         return Integer.valueOf(jtfParcelas.getText());
     }
 }

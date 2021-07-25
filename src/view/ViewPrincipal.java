@@ -56,13 +56,6 @@ public class ViewPrincipal extends javax.swing.JFrame {
         jbCaixa = new javax.swing.JButton();
         jbAjuda = new javax.swing.JButton();
         jbSair = new javax.swing.JButton();
-        textos = new javax.swing.JPanel();
-        jlClientes = new javax.swing.JLabel();
-        jlEstoque = new javax.swing.JLabel();
-        jlRelatorios = new javax.swing.JLabel();
-        jlCaixa = new javax.swing.JLabel();
-        jlAjuda = new javax.swing.JLabel();
-        jlSair = new javax.swing.JLabel();
         painelDesktop = new javax.swing.JLayeredPane();
         uJPanelImagem1 = new componentes.UJPanelImagem();
 
@@ -111,7 +104,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
         menu.setBackground(new java.awt.Color(51, 51, 51));
 
         icones.setOpaque(false);
-        icones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 50, 5));
+        icones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 5));
 
         jbClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vania's bg/pessoa-vip (1).png"))); // NOI18N
         jbClientes.setMaximumSize(new java.awt.Dimension(70, 70));
@@ -190,6 +183,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
         icones.add(jbCaixa);
 
         jbAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vania's bg/conta-bancaria.png"))); // NOI18N
+        jbAjuda.setEnabled(false);
         jbAjuda.setMaximumSize(new java.awt.Dimension(70, 70));
         jbAjuda.setMinimumSize(new java.awt.Dimension(70, 70));
         jbAjuda.setPreferredSize(new java.awt.Dimension(70, 70));
@@ -199,80 +193,25 @@ public class ViewPrincipal extends javax.swing.JFrame {
         jbSair.setMaximumSize(new java.awt.Dimension(70, 70));
         jbSair.setMinimumSize(new java.awt.Dimension(70, 70));
         jbSair.setPreferredSize(new java.awt.Dimension(70, 70));
+        jbSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jbSairMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbSairMouseExited(evt);
+            }
+        });
+        jbSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSairActionPerformed(evt);
+            }
+        });
         icones.add(jbSair);
-
-        textos.setBackground(new java.awt.Color(51, 51, 51));
-
-        jlClientes.setBackground(new java.awt.Color(0, 0, 0));
-        jlClientes.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jlClientes.setForeground(new java.awt.Color(255, 255, 255));
-        jlClientes.setText("Clientes");
-
-        jlEstoque.setBackground(new java.awt.Color(0, 0, 0));
-        jlEstoque.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jlEstoque.setForeground(new java.awt.Color(255, 255, 255));
-        jlEstoque.setText("Estoque");
-
-        jlRelatorios.setBackground(new java.awt.Color(0, 0, 0));
-        jlRelatorios.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jlRelatorios.setForeground(new java.awt.Color(255, 255, 255));
-        jlRelatorios.setText("Relatorios");
-
-        jlCaixa.setBackground(new java.awt.Color(0, 0, 0));
-        jlCaixa.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jlCaixa.setForeground(new java.awt.Color(255, 255, 255));
-        jlCaixa.setText("Caixa");
-
-        jlAjuda.setBackground(new java.awt.Color(0, 0, 0));
-        jlAjuda.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jlAjuda.setForeground(new java.awt.Color(255, 255, 255));
-        jlAjuda.setText("Boletos");
-
-        jlSair.setBackground(new java.awt.Color(0, 0, 0));
-        jlSair.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jlSair.setForeground(new java.awt.Color(255, 255, 255));
-        jlSair.setText("Sair");
-
-        javax.swing.GroupLayout textosLayout = new javax.swing.GroupLayout(textos);
-        textos.setLayout(textosLayout);
-        textosLayout.setHorizontalGroup(
-            textosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(textosLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jlClientes)
-                .addGap(47, 47, 47)
-                .addComponent(jlEstoque)
-                .addGap(45, 45, 45)
-                .addComponent(jlRelatorios)
-                .addGap(47, 47, 47)
-                .addComponent(jlCaixa)
-                .addGap(62, 62, 62)
-                .addComponent(jlAjuda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                .addComponent(jlSair)
-                .addGap(31, 31, 31))
-        );
-        textosLayout.setVerticalGroup(
-            textosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(textosLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(textosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlClientes)
-                    .addComponent(jlEstoque)
-                    .addComponent(jlRelatorios)
-                    .addComponent(jlCaixa)
-                    .addComponent(jlAjuda)
-                    .addComponent(jlSair)))
-        );
 
         javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
         menu.setLayout(menuLayout);
         menuLayout.setHorizontalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(textos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
             .addGroup(menuLayout.createSequentialGroup()
                 .addComponent(icones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -282,9 +221,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(icones, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         painelSuperior.add(menu);
@@ -334,7 +271,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(painelSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(painelDesktop))
         );
@@ -393,13 +330,13 @@ public class ViewPrincipal extends javax.swing.JFrame {
         jbClientes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 204, 255),
                 new java.awt.Color(255, 204, 255), new java.awt.Color(255, 204, 255), new java.awt.Color(255, 204, 255)));
         jbClientes.setBackground(new java.awt.Color(255, 153, 204));
-        jlClientes.setForeground(new java.awt.Color(255, 153, 204));
+        //jlClientes.setForeground(new java.awt.Color(255, 153, 204));
     }//GEN-LAST:event_jbClientesMouseEntered
 
     private void jbClientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbClientesMouseExited
         jbClientes.setBorder(null);
         jbClientes.setBackground(null);
-        jlClientes.setForeground(Color.WHITE);
+        //jlClientes.setForeground(Color.WHITE);
     }//GEN-LAST:event_jbClientesMouseExited
 
     private void jbEstoqueMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbEstoqueMouseEntered
@@ -440,6 +377,21 @@ public class ViewPrincipal extends javax.swing.JFrame {
         jbCaixa.setBackground(null);
         jbCaixa.setForeground(Color.WHITE);
     }//GEN-LAST:event_jbCaixaMouseExited
+
+    private void jbSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jbSairActionPerformed
+
+    private void jbSairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbSairMouseEntered
+        jbSair.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 204, 255),
+                new java.awt.Color(255, 204, 255), new java.awt.Color(255, 204, 255), new java.awt.Color(255, 204, 255)));
+        jbSair.setBackground(new java.awt.Color(255, 153, 204));
+    }//GEN-LAST:event_jbSairMouseEntered
+
+    private void jbSairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbSairMouseExited
+        jbSair.setBorder(null);
+        jbSair.setBackground(null);
+    }//GEN-LAST:event_jbSairMouseExited
 
     private void dataHora() {
         LocalDateTime agora = LocalDateTime.now();
@@ -489,6 +441,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ViewPrincipal().setVisible(true);
+                new ViewPrincipal().setUndecorated(false);
             }
         });
     }
@@ -503,18 +456,11 @@ public class ViewPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jbEstoque;
     private javax.swing.JButton jbRelatorios;
     private javax.swing.JButton jbSair;
-    private javax.swing.JLabel jlAjuda;
-    private javax.swing.JLabel jlCaixa;
-    private javax.swing.JLabel jlClientes;
-    private javax.swing.JLabel jlEstoque;
-    private javax.swing.JLabel jlRelatorios;
-    private javax.swing.JLabel jlSair;
     private javax.swing.JTextField jtfData;
     private javax.swing.JTextField jtfHora;
     private javax.swing.JPanel menu;
     private javax.swing.JLayeredPane painelDesktop;
     private javax.swing.JPanel painelSuperior;
-    private javax.swing.JPanel textos;
     private componentes.UJPanelImagem uJPanelImagem1;
     // End of variables declaration//GEN-END:variables
 

@@ -29,7 +29,9 @@ public class DAOVendas extends ConexaoMySql {
                     + "ven_parcelas,"
                     + "fk_cliente,"
                     + "ven_estado,"
-                    + "ven_custo"
+                    + "ven_custo,"
+                    + "ven_valor_pendente,"
+                    + "ven_valor_pago"                            
                     + ") VALUES ("
                     + "'" + pModelVendas.getVenDataVenda() + "',"
                     + "'" + pModelVendas.getVenValorLiquido() + "',"
@@ -39,7 +41,9 @@ public class DAOVendas extends ConexaoMySql {
                     + "'" + pModelVendas.getVenParcelas() + "',"
                     + "'" + pModelVendas.getCliente() + "',"
                     + "'" + pModelVendas.getVenEstado() + "',"
-                    + "'" + pModelVendas.getVenCusto() + "'"
+                    + "'" + pModelVendas.getVenCusto() + "',"
+                    + "'" + pModelVendas.getVenValorPendente() + "',"
+                    + "'" + pModelVendas.getVenValorPago() + "'"
                     + ");"
             );
         } catch (Exception e) {
@@ -71,7 +75,9 @@ public class DAOVendas extends ConexaoMySql {
                     + "ven_parcelas,"
                     + "fk_cliente,"
                     + "ven_estado,"
-                    + "ven_custo"
+                    + "ven_custo,"
+                    + "ven_valor_pendente,"
+                    + "ven_valor_pago"
                     + " FROM"
                     + " tbl_vendas"
                     + " WHERE"
@@ -90,6 +96,9 @@ public class DAOVendas extends ConexaoMySql {
                 modelVendas.setCliente(this.getResultSet().getInt(8));
                 modelVendas.setVenEstado(this.getResultSet().getString(9));
                 modelVendas.setVenCusto(this.getResultSet().getDouble(10));
+                modelVendas.setVenValorPendente(this.getResultSet().getDouble(11));
+                modelVendas.setVenValorPago(this.getResultSet().getDouble(12));
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -164,7 +173,9 @@ public class DAOVendas extends ConexaoMySql {
                     + "ven_parcelas,"
                     + "fk_cliente,"
                     + "ven_estado,"
-                    + "ven_custo"
+                    + "ven_custo,"
+                    + "ven_valor_pendente,"
+                    + "ven_valor_pago"
                     + " FROM"
                     + " tbl_vendas WHERE ven_estado = 'pendente' ORDER BY ven_data_venda DESC"
                     + ";"
@@ -182,6 +193,8 @@ public class DAOVendas extends ConexaoMySql {
                 modelVendas.setCliente(this.getResultSet().getInt(8));
                 modelVendas.setVenEstado(this.getResultSet().getString(9));
                 modelVendas.setVenCusto(this.getResultSet().getDouble(10));
+                modelVendas.setVenValorPendente(this.getResultSet().getDouble(11));
+                modelVendas.setVenValorPago(this.getResultSet().getDouble(12));
                 listamodelVendas.add(modelVendas);
             }
         } catch (Exception e) {
@@ -230,7 +243,28 @@ public class DAOVendas extends ConexaoMySql {
             this.conectar();
             return this.executarUpdateDeleteSQL(
                     "UPDATE tbl_vendas SET "
-                    + "ven_estado = '" + pModelVendas.getVenEstado() + "'"
+                    + "ven_estado = '" + pModelVendas.getVenEstado() + "',"
+                    + "ven_valor_pendente = '" + pModelVendas.getVenValorPendente()+ "',"
+                    + "ven_valor_pago = '" + pModelVendas.getVenValorPago()+ "'"                          
+                    + " WHERE "
+                    + "pk_id_vendas = '" + pModelVendas.getIdVenda() + "'"
+                    + ";"
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            this.fecharConexao();
+        }
+    }
+    
+        public boolean atualizarValorPendenteVendaDAO(ModelVendas pModelVendas) {
+        try {
+            this.conectar();
+            return this.executarUpdateDeleteSQL(
+                    "UPDATE tbl_vendas SET "
+                    + "ven_valor_pendente = '" + pModelVendas.getVenValorPendente()+ "',"
+                    + "ven_valor_pago = '" + pModelVendas.getVenValorPago()+ "'"
                     + " WHERE "
                     + "pk_id_vendas = '" + pModelVendas.getIdVenda() + "'"
                     + ";"

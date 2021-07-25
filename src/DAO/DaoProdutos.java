@@ -33,12 +33,14 @@ public class DaoProdutos extends ConexaoMySql {
                     + "pro_nome,"
                     + "pro_valor,"
                     + "pro_estoque,"
-                    + "pro_valor_compra"
+                    + "pro_valor_compra,"
+                    + "pro_desconto"
                     + ") VALUES ("
                     + "'" + pModelProdutos.getProNome() + "',"
                     + "'" + pModelProdutos.getProValor() + "',"
                     + "'" + pModelProdutos.getProEstoque() + "',"
-                    + "'" + pModelProdutos.getProValorCompra() + "'"
+                    + "'" + pModelProdutos.getProValorCompra() + "',"
+                    + "'" + pModelProdutos.getProDesconto() + "'"
                     + ");"
             );
         } catch (Exception e) {
@@ -83,7 +85,8 @@ public class DaoProdutos extends ConexaoMySql {
                     + "pro_nome = '" + pModelProdutos.getProNome() + "',"
                     + "pro_valor = '" + pModelProdutos.getProValor() + "',"
                     + "pro_estoque = '" + pModelProdutos.getProEstoque() + "',"
-                    + "pro_valor_compra = '" + pModelProdutos.getProValorCompra() + "'"
+                    + "pro_valor_compra = '" + pModelProdutos.getProValorCompra() + "',"
+                    + "pro_desconto = '" + pModelProdutos.getProDesconto() + "'"
                     + " WHERE pk_id_produto = '" + pModelProdutos.getIdProduto() + "'"
             );
         } catch (Exception e) {
@@ -109,7 +112,8 @@ public class DaoProdutos extends ConexaoMySql {
                     + "pro_nome, "
                     + "pro_valor, "
                     + "pro_estoque, "
-                    + "pro_valor_compra "
+                    + "pro_valor_compra, "
+                    + "pro_desconto "
                     + "FROM tbl_produto WHERE pk_id_produto = '" + pIdProduto + "';");
             /**
              * Pegando o valor dentro do BD e jogando no modelProdutos*
@@ -120,6 +124,7 @@ public class DaoProdutos extends ConexaoMySql {
                 modelProdutos.setProValor(this.getResultSet().getDouble(3));
                 modelProdutos.setProEstoque(this.getResultSet().getInt(4));
                 modelProdutos.setProValorCompra(this.getResultSet().getDouble(5));
+                modelProdutos.setProDesconto(this.getResultSet().getDouble(6));
             }
 
         } catch (Exception e) {
@@ -145,7 +150,8 @@ public class DaoProdutos extends ConexaoMySql {
                     + "pro_nome, "
                     + "pro_valor, "
                     + "pro_estoque, "
-                    + "pro_valor_compra "
+                    + "pro_valor_compra, "
+                    + "pro_desconto "
                     + "FROM tbl_produto WHERE pro_nome = '" + pNomeProduto + "';");
             /**
              * Pegando o valor dentro do BD e jogando no modelProdutos*
@@ -156,6 +162,7 @@ public class DaoProdutos extends ConexaoMySql {
                 modelProdutos.setProValor(this.getResultSet().getDouble(3));
                 modelProdutos.setProEstoque(this.getResultSet().getInt(4));
                 modelProdutos.setProValorCompra(this.getResultSet().getDouble(5));
+                modelProdutos.setProDesconto(this.getResultSet().getDouble(6));
             }
 
         } catch (Exception e) {
@@ -181,7 +188,8 @@ public class DaoProdutos extends ConexaoMySql {
                     + "pro_nome, "
                     + "pro_valor, "
                     + "pro_estoque, "
-                    + "pro_valor_compra "
+                    + "pro_valor_compra, "
+                    + "pro_desconto "
                     + "FROM tbl_produto ORDER BY pro_nome ASC ;");
             while (this.getResultSet().next()) {
                 modelProdutos = new ModelProdutos();
@@ -190,6 +198,43 @@ public class DaoProdutos extends ConexaoMySql {
                 modelProdutos.setProValor(this.getResultSet().getDouble(3));
                 modelProdutos.setProEstoque(this.getResultSet().getInt(4));
                 modelProdutos.setProValorCompra(this.getResultSet().getDouble(5));
+                modelProdutos.setProDesconto(this.getResultSet().getDouble(6));
+                listaModelProdutos.add(modelProdutos);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            this.fecharConexao();
+        }
+        return listaModelProdutos;
+    }
+
+    /**
+     * retornar uma lista completa de produtos
+     *
+     * @return listaModelProdutos
+     */
+    public ArrayList<ModelProdutos> retornarListaPordutosEstoqueDAO() {
+        ArrayList<ModelProdutos> listaModelProdutos = new ArrayList<>();
+        ModelProdutos modelProdutos = new ModelProdutos();
+        try {
+            this.conectar();
+            this.executarSQL("SELECT "
+                    + "pk_id_produto, "
+                    + "pro_nome, "
+                    + "pro_valor, "
+                    + "pro_estoque, "
+                    + "pro_valor_compra, "
+                    + "pro_desconto "
+                    + "FROM tbl_produto WHERE pro_estoque != '0' ORDER BY pro_nome ASC ;");
+            while (this.getResultSet().next()) {
+                modelProdutos = new ModelProdutos();
+                modelProdutos.setIdProduto(this.getResultSet().getInt(1));
+                modelProdutos.setProNome(this.getResultSet().getString(2));
+                modelProdutos.setProValor(this.getResultSet().getDouble(3));
+                modelProdutos.setProEstoque(this.getResultSet().getInt(4));
+                modelProdutos.setProValorCompra(this.getResultSet().getDouble(5));
+                modelProdutos.setProDesconto(this.getResultSet().getDouble(6));
                 listaModelProdutos.add(modelProdutos);
             }
         } catch (Exception e) {

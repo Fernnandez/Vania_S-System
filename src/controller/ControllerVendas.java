@@ -66,6 +66,10 @@ public class ControllerVendas {
         return this.daoVendas.atualizarEstadoVendasDAO(pModelVendas);
     }
 
+    public boolean atualizarValorVendasController(ModelVendas pModelVendas) {
+        return this.daoVendas.atualizarValorPendenteVendaDAO(pModelVendas);
+    }
+
     /**
      * exclui Vendas
      *

@@ -16,19 +16,21 @@ import model.ModelCliente;
 
 /**
  *
- * @author afbo2
+ * @author Fernandes
  */
 public class ClienteVenda extends javax.swing.JDialog {
 
     ControllerCliente controllerCliente = new ControllerCliente();
     ModelCliente modelCliente = new ModelCliente();
     ArrayList<ModelCliente> listaModelCliente = new ArrayList<>();
+    Caixa caixa = new Caixa();
 
     /**
-     * Creates new form ClienteVenda
+     * Creates new form NewJDialog
      */
     public ClienteVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        setUndecorated(true);
         initComponents();
         carregarClientes();
         customTable();
@@ -44,22 +46,24 @@ public class ClienteVenda extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jbCancelar = new javax.swing.JButton();
         jlCliente = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtListaDeClientes = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        jbEnviar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vania's bg/pessoa-vip (1).png"))); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jButton1.setText("Enviar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbCancelar.setBackground(new java.awt.Color(255, 102, 102));
+        jbCancelar.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jbCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbCancelarActionPerformed(evt);
             }
         });
 
@@ -101,51 +105,65 @@ public class ClienteVenda extends javax.swing.JDialog {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vania's bg/pessoa-vip (1).png"))); // NOI18N
 
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
+        jbEnviar.setBackground(new java.awt.Color(204, 255, 204));
+        jbEnviar.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jbEnviar.setForeground(new java.awt.Color(0, 0, 0));
+        jbEnviar.setText("Enviar");
+        jbEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEnviarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
                         .addContainerGap())
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(0, 0, Short.MAX_VALUE)
-                        .add(jLabel2)
-                        .add(18, 18, 18)
-                        .add(jlCliente)
-                        .add(18, 18, 18)
-                        .add(jLabel1)
-                        .add(25, 25, 25))))
-            .add(layout.createSequentialGroup()
-                .add(196, 196, 196)
-                .add(jButton1)
-                .add(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlCliente)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addGap(25, 25, 25))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbEnviar)
+                .addGap(50, 50, 50)
+                .addComponent(jbCancelar)
+                .addGap(91, 91, 91))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jlCliente, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 37, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel1)
-                    .add(jLabel2))
-                .add(18, 18, 18)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 187, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton1)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbCancelar)
+                    .addComponent(jbEnviar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Cliente();
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        jtListaDeClientes.getSelectionModel().clearSelection();
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbCancelarActionPerformed
 
     private void jtListaDeClientesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtListaDeClientesKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -153,6 +171,11 @@ public class ClienteVenda extends javax.swing.JDialog {
             dispose();
         }
     }//GEN-LAST:event_jtListaDeClientesKeyPressed
+
+    private void jbEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEnviarActionPerformed
+        Cliente();
+        dispose();
+    }//GEN-LAST:event_jbEnviarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,6 +203,7 @@ public class ClienteVenda extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(ClienteVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -197,16 +221,17 @@ public class ClienteVenda extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbCancelar;
+    private javax.swing.JButton jbEnviar;
     private javax.swing.JLabel jlCliente;
     private javax.swing.JTable jtListaDeClientes;
     // End of variables declaration//GEN-END:variables
 
     private void carregarClientes() {
-        listaModelCliente = new ArrayList<ModelCliente>();
+        listaModelCliente = new ArrayList<>();
         listaModelCliente = controllerCliente.getListaClienteController();
         DefaultTableModel modelo = (DefaultTableModel) jtListaDeClientes.getModel();
         modelo.setNumRows(0);
@@ -223,6 +248,7 @@ public class ClienteVenda extends javax.swing.JDialog {
         int linha = jtListaDeClientes.getSelectedRow();
         int codigoCliente = (int) jtListaDeClientes.getValueAt(linha, 0);
         return codigoCliente;
+
     }
 
     //customização das tabelas na interface
