@@ -178,7 +178,6 @@ public class Caixa extends javax.swing.JInternalFrame {
         jbDesconto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vania's bg/desconto.png"))); // NOI18N
         jbDesconto.setText("Conceder Desconto");
         jbDesconto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbDesconto.setEnabled(false);
         jbDesconto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbDescontoActionPerformed(evt);
@@ -605,6 +604,7 @@ public class Caixa extends javax.swing.JInternalFrame {
         jtfValorTotal.setOpaque(false);
         painelValorTotal.add(jtfValorTotal);
 
+        painelDesconto.setBackground(new java.awt.Color(255, 204, 204));
         painelDesconto.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.gray, java.awt.Color.gray));
         painelDesconto.setLayout(new javax.swing.OverlayLayout(painelDesconto));
 
@@ -613,7 +613,6 @@ public class Caixa extends javax.swing.JInternalFrame {
         jlDesconto.setForeground(new java.awt.Color(0, 0, 0));
         jlDesconto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlDesconto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vania's bg/etiqueta-de-desconto.png"))); // NOI18N
-        jlDesconto.setEnabled(false);
         jlDesconto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlDesconto.setMaximumSize(new java.awt.Dimension(250, 150));
         jlDesconto.setMinimumSize(new java.awt.Dimension(128, 88));
@@ -623,8 +622,9 @@ public class Caixa extends javax.swing.JInternalFrame {
         painelDesconto.add(jlDesconto);
 
         jtfDesconto.setEditable(false);
-        jtfDesconto.setBackground(new java.awt.Color(255, 204, 204));
-        jtfDesconto.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        jtfDesconto.setBackground(new java.awt.Color(255, 204, 255));
+        jtfDesconto.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        jtfDesconto.setForeground(new java.awt.Color(0, 0, 0));
         jtfDesconto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtfDesconto.setBorder(null);
         jtfDesconto.setOpaque(false);
@@ -1325,7 +1325,7 @@ public class Caixa extends javax.swing.JInternalFrame {
                     modelProdutos.getProNome(),
                     modelProdutos.getProValor(),
                     Quantidade,
-                    Quantidade * (modelProdutos.getProValor() - modelProdutos.getProDesconto()),
+                    Quantidade * (modelProdutos.getProValor()),
                     modelProdutos.getProValorCompra()
                 });
             } else {
@@ -1349,6 +1349,9 @@ public class Caixa extends javax.swing.JInternalFrame {
         //tabela dos produtos a serem vendidos
         DefaultTableModel modelo = (DefaultTableModel) jtProdutosDaVenda.getModel();
         modelo.setNumRows(0);
+        
+        //Retirando o desconto aplicado
+        Desconto = 0.0;
 
         //painel Interface
         jlDesconto.setText("");
@@ -1374,13 +1377,13 @@ public class Caixa extends javax.swing.JInternalFrame {
 
     //Soma todos os protudos da Venda
     private void somarValorTotalProdutos() {
-        double soma = 0, valor;
+        double soma = 0;
+        double valor = 0;
         int cont = jtProdutosDaVenda.getRowCount();
         for (int i = 0; i < cont; i++) {
             valor = (double) jtProdutosDaVenda.getValueAt(i, 4);
             soma = soma + valor;
         }
-
         soma = soma - Desconto;
         String texto = "R$" + (String.valueOf(soma));
         jtfValorTotal.setText(texto);
@@ -1416,12 +1419,12 @@ public class Caixa extends javax.swing.JInternalFrame {
 
     //aplica o desconto desejado sobre o valor total da venda e moodifica o painel Info
     private void aplicarDescontos() {
-        try {
-            jlDesconto.setText(String.valueOf(Desconto));
-            if (Desconto == 0) {
+        try {     
+            if (Desconto == 0) {   
             } else {
+                String texto = "R$" + (String.valueOf(Desconto));
+                jtfDesconto.setText(texto);
                 jlDesconto.setVisible(false);
-                jtfDesconto.setVisible(true);
             }
         } catch (NumberFormatException e) {
         }
